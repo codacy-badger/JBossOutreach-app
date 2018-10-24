@@ -1,78 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
-    android:layout_height="75dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <TextView
-        android:id="@+id/name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name:"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/description_text"
-        app:layout_constraintVertical_chainStyle="packed"/>
-    <TextView
-        android:id="@+id/description_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description:"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/name_text"
-        app:layout_constraintBottom_toTopOf="@id/language_text" />
-    <TextView
-        android:id="@+id/language_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Language:"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description_text"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    android:layout_marginEnd="10dp">
     <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toEndOf="@id/description_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="10dp">
+        android:id="@+id/name_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/description_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="false"
             android:text="blog.jbossoutreach.org"
             android:textColor="@android:color/black"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@id/name_text"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/description"
-            app:layout_constraintVertical_chainStyle="packed"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            android:layout_marginStart="50dp"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/description_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/name_container"
+        app:layout_constraintBottom_toTopOf="@id/language_container">
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="false"
             android:text="Blog site for JBoss Outreach"
             android:textColor="@android:color/black"
-            app:layout_constraintTop_toBottomOf="@id/name"
-            app:layout_constraintBottom_toTopOf="@id/language"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@id/description_text"
+            app:layout_constraintTop_toTopOf="parent"
+            android:maxEms="12"
+            android:layout_marginStart="10dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/language_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/description_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/language_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Language:"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/language"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="false"
             android:text="Java"
             android:textColor="@android:color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:maxLines="1"
-            android:ellipsize="end" />
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@id/language_text"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"/>
 
     </android.support.constraint.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -47,15 +47,12 @@ public class ApiHandler extends AsyncTask {
             dataset = new String[Jarray.length()][3];
             for (int i = 0; i < Jarray.length(); i++) {
                 JSONObject object = Jarray.getJSONObject(i);
-                if (object.getString("name") == null) dataset[i][0] = "None";
-                else
-                    dataset[i][0] = object.getString("name");
-
-                if (object.getString("description") == null) dataset[i][1] = "None";
-                    dataset[i][1] = object.getString("description");
-
-                if (object.getString("language") == null) dataset[i][2] = "None";
+                dataset[i][0] = object.getString("name");
+                if(dataset[i][0] == "null")dataset[i][0] = "None";
+                dataset[i][1] = object.getString("description");
+                if(dataset[i][1] == "null")dataset[i][1] = "None";
                 dataset[i][2] = object.getString("language");
+                if(dataset[i][2] == "null")dataset[i][2] = "None";
             }
         } catch (Exception e) {
             e.printStackTrace();

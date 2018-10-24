@@ -33,6 +33,8 @@ public class RepositListRecyclerAdapter extends RecyclerView.Adapter<RepositList
         holder.name.setText(mDataset[position][0]);
         holder.description.setText(mDataset[position][1]);
         holder.language.setText(mDataset[position][2]);
+        if(position == getItemCount() - 1)holder.line.setVisibility(View.INVISIBLE);
+        else holder.line.setVisibility(View.VISIBLE);
 
     }
 
@@ -48,11 +50,13 @@ public class RepositListRecyclerAdapter extends RecyclerView.Adapter<RepositList
         public TextView name;
         public TextView description;
         public TextView language;
+        public View line;
         public RepositItem(View v) {
             super(v);
             name = v.findViewById(R.id.name);
             description = v.findViewById(R.id.description);
             language = v.findViewById(R.id.language);
+            line = v.findViewById(R.id.line);
         }
     }
 }
