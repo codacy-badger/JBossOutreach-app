@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new RepositListRecyclerAdapter(null);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.invalidate();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 requestData();
             }
         });
+        requestData();
     }
 
     private void requestData(){

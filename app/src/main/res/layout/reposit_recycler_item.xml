@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/container"
     android:layout_height="75dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
@@ -48,7 +49,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/description"
-            app:layout_constraintVertical_chainStyle="packed"/>
+            app:layout_constraintVertical_chainStyle="packed"
+            android:maxLines="1"
+            android:ellipsize="end" />
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
@@ -56,7 +59,9 @@
             android:text="Blog site for JBoss Outreach"
             android:textColor="@android:color/black"
             app:layout_constraintTop_toBottomOf="@id/name"
-            app:layout_constraintBottom_toTopOf="@id/language" />
+            app:layout_constraintBottom_toTopOf="@id/language"
+            android:maxLines="1"
+            android:ellipsize="end" />
         <TextView
             android:id="@+id/language"
             android:layout_width="wrap_content"
@@ -65,7 +70,9 @@
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:maxLines="1"
+            android:ellipsize="end" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
