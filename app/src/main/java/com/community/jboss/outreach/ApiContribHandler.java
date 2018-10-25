@@ -3,7 +3,7 @@ package com.community.jboss.outreach;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.community.jboss.outreach.activities.MainActivity;
+import com.community.jboss.outreach.activities.ContributActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,13 +15,14 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ApiContribHandler extends AsyncTask {
-    Context context;
-    String name;
-    String[][] dataset;
-    String apiURL = "https://api.github.com/orgs/JBossOutreach/repos";
+    private Context context;
+    private String reposit_name;
+    private String[][] dataset;
+    private String apiURL;
 
-    public ApiContribHandler(Context context) {
+    public ApiContribHandler(Context context,String name) {
         this.context = context;
+        reposit_name = name;
     }
 
     @Override
@@ -31,6 +32,7 @@ public class ApiContribHandler extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] objects) {
+        apiURL = "https://api.github.com/repos/JBossOutreach/" + reposit_name + "/contributors";
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
@@ -48,12 +50,11 @@ public class ApiContribHandler extends AsyncTask {
             dataset = new String[Jarray.length()][3];
             for (int i = 0; i < Jarray.length(); i++) {
                 JSONObject object = Jarray.getJSONObject(i);
-                dataset[i][0] = object.getString("name");
-                if(dataset[i][0] == "null")dataset[i][0] = "None";
-                dataset[i][1] = object.getString("description");
-                if(dataset[i][1] == "null")dataset[i][1] = "None";
-                dataset[i][2] = object.getString("language");
-                if(dataset[i][2] == "null")dataset[i][2] = "None";
+                dataset[i][0] = object.getString("avatar_url");
+                dataset[i][1] = object.getString("login");
+                if(dataset[i][1].equals("null"))dataset[i][1] = "Not given";
+                dataset[i][2] = object.getString("contributions");
+                if(dataset[i][2].equals("null"))dataset[i][2] = "Not given";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,6 +65,6 @@ public class ApiContribHandler extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        ((MainActivity) context).receiveData(dataset);
+        ((ContributActivity) context).receiveData(dataset);
     }
 }

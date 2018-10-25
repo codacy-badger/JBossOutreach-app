@@ -25,7 +25,7 @@ public class ContributorsRecyclerAdapter extends RecyclerView.Adapter<Contributo
                                                                      int viewType) {
         // create a new view
         View v = (View) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.reposit_recycler_item, parent, false);
+                .inflate(R.layout.contributors_recycler_item, parent, false);
         ContributorsRecyclerAdapter.ContribItem vh = new ContributorsRecyclerAdapter.ContribItem(v);
         return vh;
     }
@@ -35,11 +35,6 @@ public class ContributorsRecyclerAdapter extends RecyclerView.Adapter<Contributo
     public void onBindViewHolder(ContributorsRecyclerAdapter.ContribItem holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Picasso.get()
-                .load(mDataset[position][0])
-                .fit()
-                .centerCrop()
-                .into(holder.image);
         holder.name.setText(mDataset[position][1]);
         holder.numberOFContribs.setText(mDataset[position][2]);
         if(Integer.valueOf(mDataset[position][2]) == 1){
@@ -50,6 +45,12 @@ public class ContributorsRecyclerAdapter extends RecyclerView.Adapter<Contributo
         }
         if(position == getItemCount() - 1)holder.line.setVisibility(View.INVISIBLE);
         else holder.line.setVisibility(View.VISIBLE);
+
+        Picasso.get()
+                .load(mDataset[position][0])
+                .fit()
+                .centerCrop()
+                .into(holder.image);
 
     }
 
