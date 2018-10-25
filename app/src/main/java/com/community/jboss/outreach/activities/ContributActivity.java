@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.community.jboss.outreach.ApiContribHandler;
@@ -20,6 +22,7 @@ public class ContributActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
     private String name;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class ContributActivity extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_list);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        progressBar = findViewById(R.id.progressBar);
 
         name = getIntent().getStringExtra(KeyStore.NAME_KEY);
         mLayoutManager = new LinearLayoutManager(this);
@@ -57,6 +61,7 @@ public class ContributActivity extends AppCompatActivity {
 
     public void receiveData(String[][] data) {
         swipeRefreshLayout.setRefreshing(false);
+        progressBar.setVisibility(View.GONE);
         if (data != null) {
             mAdapter = new ContributorsRecyclerAdapter(data, this);
             mRecyclerView.setAdapter(mAdapter);
