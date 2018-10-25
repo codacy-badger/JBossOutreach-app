@@ -20,10 +20,11 @@
         android:text="Michael"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/number_contributions"
+        app:layout_constraintVertical_chainStyle="packed"
         android:textSize="25sp"
-        android:layout_marginStart="20dp"
         />
     <TextView
         android:id="@+id/number_contributions"
@@ -32,11 +33,11 @@
         android:text="25"
         android:textSize="35sp"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/contributions_text"
-        app:layout_constraintStart_toEndOf="@id/nickname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/nickname"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintEnd_toStartOf="@id/contributions_text"
+        app:layout_constraintHorizontal_chainStyle="packed"
         />
     <TextView
         android:id="@+id/contributions_text"
@@ -45,10 +46,11 @@
         android:text="contributions"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/number_contributions"
+        app:layout_constraintTop_toBottomOf="@id/nickname"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/nickname"
+        app:layout_constraintStart_toEndOf="@id/number_contributions"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
         />
     <View
         android:id="@+id/line"
