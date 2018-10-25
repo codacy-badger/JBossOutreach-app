@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.community.jboss.outreach.ApiHandler;
+import com.community.jboss.outreach.ApiRepositHandler;
 import com.community.jboss.outreach.R;
 import com.community.jboss.outreach.RepositListRecyclerAdapter;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new RepositListRecyclerAdapter(null);
+        mAdapter = new RepositListRecyclerAdapter(null,this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.invalidate();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestData(){
-        new ApiHandler(this).execute();
+        new ApiRepositHandler(this).execute();
     }
     public void receiveData(String[][] data){
         swipeRefreshLayout.setRefreshing(false);
         if(data!=null) {
-            mAdapter = new RepositListRecyclerAdapter(data);
+            mAdapter = new RepositListRecyclerAdapter(data,this);
             mRecyclerView.setAdapter(mAdapter);
             mRecyclerView.invalidate();
         }

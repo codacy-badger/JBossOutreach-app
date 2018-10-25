@@ -14,12 +14,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ApiHandler extends AsyncTask {
+public class ApiRepositHandler extends AsyncTask {
     Context context;
     String[][] dataset;
     String apiURL = "https://api.github.com/orgs/JBossOutreach/repos";
 
-    public ApiHandler(Context context) {
+    public ApiRepositHandler(Context context) {
         this.context = context;
     }
 

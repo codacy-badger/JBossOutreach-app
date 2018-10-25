@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JBoss Outreach</string>
+    <string name="contribution_singular">Contribution</string>
+    <string name="contribution_plural">Contributions</string>
 </resources>
